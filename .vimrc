@@ -1,13 +1,50 @@
+set vb t_vb=
+au GuiEnter * set t_vb=
+
+
+
+
+"avoiv paste indent issue
+set pastetoggle=<F3>
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
 let mapleader=","
 filetype on
 filetype plugin on
 map 0 ^
+
+"easy-motion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+"map <Leader>ej <Plug>(easymotion-j)
+"map <Leader>ek <Plug>(easymotion-k)"
+" "
+" <Leader>f{char} to move to {char}
+"map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>ef <Plug>(easymotion-overwin-f)
 "
+"s{char}{char} to move to {char}{char}
+nmap <Leader>ed <Plug>(easymotion-overwin-f2)
+"
+"" Move to line
+nmap <Leader>el <Plug>(easymotion-overwin-line)
+
+" Move to word
+"map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>ew <Plug>(easymotion-overwin-w)"
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 map <leader>bn :bnext<cr>
 map <leader>bp :bprevious<cr>
 
+set undodir=~/undodir
+set undofile
 
 """"""""""""""""""""""""""""""
 " => CTRL-P
@@ -23,28 +60,10 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
 "Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
+"map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>tx :tabnext 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a"<esc>`<i"<esc>
-
-" " Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
+map <leader>tm :tabmove
+map <leader>tx :tabnext
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
@@ -52,10 +71,6 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" 设置快捷键将选中文本块复制至系统剪贴板
-vnoremap <Leader>y "+y
-" 设置快捷键将系统剪贴板内容粘贴至 vim
-nmap <Leader>p "+p
 set history=500
 " 依次遍历子窗口
 nnoremap <Leader>wn <C-W><C-W>
@@ -88,7 +103,7 @@ set background=dark
 "colorscheme phd
 
 " 禁止光标闪烁
-set gcr=a:block-blinkon0
+"set gcr=a:block-blinkon0
  " 禁止显示滚动条
 set guioptions-=l
 set guioptions-=L
@@ -158,19 +173,17 @@ nmap <silent> <Leader>sw :FSHere<cr>
 "tagbar
 "nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <Leader>ts :TagbarToggle<CR>
-" 设置 tagbar 子窗口的位置出现在主编辑区的左边 
-let tagbar_left=1 
-" 设置显示／隐藏标签列表子窗口的快捷键。速记：identifier list by tag
-nnoremap <Leader>ilt :TagbarToggle<CR> 
-" 设置标签子窗口的宽度 
-let tagbar_width=32 
-" tagbar 子窗口中不显示冗余帮助信息 
+" 设置 tagbar 子窗口的位置出现在主编辑区的左边
+let tagbar_left=1
+let tagbar_width=32
+" tagbar 子窗口中不显示冗余帮助信息
 let g:tagbar_compact=1
+let g:tagbar_ctags_bin='/usr/bin/ctags'
 let g:tagbar_type_cpp = {
     \ 'kinds' : [
          \ 'c:classes:0:1',
          \ 'd:macros:0:1',
-         \ 'e:enumerators:0:0', 
+         \ 'e:enumerators:0:0',
          \ 'f:functions:0:1',
          \ 'g:enumeration:0:1',
          \ 'l:local:0:1',
@@ -211,8 +224,11 @@ set clipboard=unnamed
 " 使用 ctrlsf.vim
 " 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in
 " project
-nnoremap <Leader>sfr :CtrlSF<CR>
-nnoremap <Leader>sf :CtrlSF 
+nmap     <Leader>sp <Plug>CtrlSFCwordPath
+nnoremap <Leader>sr :CtrlSF<CR>
+nnoremap <Leader>sf :CtrlSF
+"vnoremap<Leader>sw <Plug>CtrlSFVwordPath
+vmap     <Leader>sw <Plug>CtrlSFVwordPath
 
 " 替换函数。参数说明：
 " confirm：是否替换前逐一确认
@@ -244,9 +260,6 @@ nnoremap <Leader>rc :call Replace(1, 0, input('Replace '.expand('<cword>').' wit
 " 确认、整词
 nnoremap <Leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
 nnoremap <Leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
-
-"aoiv paste indent issue
-set pastetoggle=<F3>
 
 "使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
 nmap <Leader>fl :NERDTreeToggle<CR>
@@ -280,10 +293,11 @@ endfunction
 
 function! CmdLine(str)
     call feedkeys(":" . a:str)
-endfunction 
+endfunction
 
 
-call plug#begin('~/.vim/plugged')
+
+call plug#begin('/usr/share/vim/vim81/plugged')
 "status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -296,7 +310,7 @@ Plug 'dyng/ctrlsf.vim'
 "comment. <leader>cc, <leader>cu
 Plug 'scrooloose/nerdcommenter'
 "snipet. <tab>
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 "file tree
 Plug 'scrooloose/nerdtree'
 "surround
@@ -306,5 +320,14 @@ Plug 'kien/ctrlp.vim'
 "pair
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
+Plug 'easymotion/vim-easymotion'
+Plug 'mileszs/ack.vim'
+
+"nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+"nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+"nnoremap <silent> n :call WordNavigation('forward')<cr>
+"nnoremap <silent> N :call WordNavigation('backward')<cr>
+Plug 'lfv89/vim-interestingwords'
+
 call plug#end()
 
