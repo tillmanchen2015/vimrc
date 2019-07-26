@@ -13,7 +13,7 @@ map <leader>tm :tabmove
 map <leader>tx :tabnext
 
 "windows
-nnoremap <leader>wn <C-W><C-W>
+nnoremap <leader>wo <C-W><C-W>
 nnoremap <leader>wl <C-W>l
 nnoremap <leader>wh <C-W>h
 nnoremap <leader>wk <C-W>k
