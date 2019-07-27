@@ -2,15 +2,15 @@
 map 0 ^
 
 "buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-map <leader>bn :bnext<cr>
-map <leader>bp :bprevious<cr>
+map bd :Bclose<cr>:tabclose<cr>gT
+map bn :bnext<cr>
+map bp :bprevious<cr>
 
 "tabs
-map <leader>tn :tabnew<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>tx :tabnext
+map tn :tabnew<cr>
+map tc :tabclose<cr>
+map tm :tabmove
+map tx :tabnext
 
 "windows
 nnoremap <leader>wo <C-W><C-W>
@@ -45,7 +45,7 @@ nmap <Leader>tn :tnext<CR>
 " 反向遍历同名标签
 nmap <Leader>tp :tprevious<CR>
 
-"ctrlsfm
+"ctrlsf
 nnoremap <leader>sp <Plug>CtrlSFCwordPath
 nnoremap <leader>sr :CtrlSF<CR>
 nnoremap <leader>sf :CtrlSF
@@ -66,12 +66,12 @@ nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR><CR>
 nmap <leader>fl :NERDTreeToggle<CR>
 
 "quickfix
-nmap <leader>qf :copen<CR>
+nmap <leader>qo :copen<CR>
 nmap <leader>qc :cclose<CR>
 nmap <leader>qn :cnext<CR>
 nmap <leader>qp :cpre<CR>
-nmap <leader>qf :cfirst<CR>
-nmap <leader>ql :clast<CR>
+"nmap <leader>qf :cfirst<CR>
+"nmap <leader>ql :clast<CR>
 
 " 替换函数。参数说明：
 " confirm：是否替换前逐一确认
