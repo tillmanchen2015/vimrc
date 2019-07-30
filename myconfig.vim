@@ -50,18 +50,26 @@ nmap <silent> <Leader>sw :FSHere<cr>
 nmap <leader>ef <Plug>(easymotion-sl)
 nmap <leader>ed <Plug>(easymotion-s2)
 nmap <leader>el <Plug>(easymotion-overwin-line)
-nmap  <leader>ew <Plug>(easymotion-bd-wl)
+nmap  <leader>ew <Plug>(easymotion-bd-w)
 
 "ctrlp
-map <leader>jp :CtrlP<cr>
-map <leader>jb :CtrlPBuffer<cr>
+"Press <c-f> and <c-b> to cycle between modes.
+"Press <c-d> to switch to filename only search instead of full path.
+"Press <c-r> to switch to regexp mode.
+"Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+"find file
+map <leader>cf :CtrlP           
+"find buffer
+map <leader>cb :CtrlPBuffer
+"mru
+map<leader>cm :CtrlPMRU
 
 "tarbar
-nnoremap <Leader>ts :TagbarToggle<CR>
+nnoremap <Leader>ts :TagbarToggle
 " 正向遍历同名标签
-nmap <Leader>tn :tnext<CR>
+nmap <Leader>tn :tnext
 " 反向遍历同名标签
-nmap <Leader>tp :tprevious<CR>
+nmap <Leader>tp :tprevious
 
 "ctrlsf
 "ctrl-c stop searching
@@ -74,8 +82,8 @@ nmap <Leader>tp :tprevious<CR>
 "-filematch
 ":h ctrlsf
 nmap <leader>sf :CtrlSF
-nmap <leader>sw <Plug>CtrlSFCwordExec
-vmap <leader>sv <Plug>CtrlSFVwordExec
+nmap <leader>sw <Plug>CtrlSFCwordPath
+vmap <leader>sv <Plug>CtrlSFVwordPath
 "nnoremap <leader>so :CtrlSFOpen<CR>
 nmap <leader>st :CtrlSFToggle<CR>
 
@@ -96,7 +104,7 @@ nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR><CR>
 nmap <leader>fl :NERDTreeFocus<CR>
 
 "quickfix
-nmap <leader>qo :copen<CR>
+nmap <leader>qf :copen<CR>
 nmap <leader>qc :cclose<CR>
 nmap <leader>qn :cnext<CR>
 nmap <leader>qp :cpre<CR>

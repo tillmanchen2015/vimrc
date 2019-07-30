@@ -28,8 +28,8 @@ set undodir=~/undodir
 set undofile
 
 "CTRL-P
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_working_path_mode = 0
-"let g:ctrlp_map = '<c-f>'
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
@@ -78,6 +78,7 @@ set number
 
 " 高亮显示当前行/列
 set cursorline
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 "set cursorcolumn
 " 高亮显示搜索结果
 set hlsearch
@@ -162,9 +163,9 @@ set clipboard=unnamed
 set tags=./tags
 
 "cscope
-set csprg=~/.vim/cscope.sh
+"set csprg=~/.vim/cscope.sh
 " set quickfix
-set cscopequickfix=s-,c-,d-,i-,t-,e-  
+set cscopequickfix=c-,d-,e-,g-,i-,s-,t-
 " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
 set cscopetag
 " check cscope for definition of a symbol before checking ctags: set to 1
