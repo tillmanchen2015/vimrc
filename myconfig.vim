@@ -2,20 +2,30 @@
 map 0 ^
 
 "buffer
-map bd :Bclose<cr>:tabclose<cr>gT
-map bn :bnext<cr>
-map bp :bprevious<cr>
+"use vim cmd directly
+":badd
+":bd  bdelete
+":bn  bnext
+":bp  bprevious
+"bufdo bd: close all buffers
+"map bc :Bclose<cr>:tabclose<cr>gT
+"map bn :bnext<cr>
+"map bp :bprevious<cr>
+"close all buffers but current one
+"nnoremap <leader>bonly :%bd|e
 
 "tabs
-map tn :tabnew<cr>
-map tc :tabclose<cr>
-map tm :tabmove
-map tx :tabnext
+"tabnew
+"tabclose
+"tabprevious
+"tabnext
+"map tn :tabnew<cr>
+"map tc :tabclose<cr>
+"map tm :tabmove
+"map tx :tabnext
 
 "windows
 nnoremap <leader>wo <C-W><C-W>
-nnoremap <leader>wl <C-W>l
-nnoremap <leader>wh <C-W>h
 nnoremap <leader>wk <C-W>k
 nnoremap <leader>wj <C-W>j
 
@@ -28,11 +38,16 @@ map <silent> <leader><cr> :noh<cr>
 " *.cpp 和 *.h 间切换
 nmap <silent> <Leader>sw :FSHere<cr>
 
+"easy grep
+",vv : search word in current cursor
+",vV : search whole word in current cursor
+",vr : :Replace
+",vo : :GrepOptions
 "easymotion
-map  <leader>ef <Plug>(easymotion-bd-f) 
-nmap <leader>ed <Plug>(easymotion-bd-f2)
+nmap <leader>ef <Plug>(easymotion-sl)
+nmap <leader>ed <Plug>(easymotion-s2)
 nmap <leader>el <Plug>(easymotion-overwin-line)
-map  <leader>ew <Plug>(easymotion-bd-wl)
+nmap  <leader>ew <Plug>(easymotion-bd-wl)
 
 "ctrlp
 map <leader>jp :CtrlP<cr>
@@ -46,10 +61,21 @@ nmap <Leader>tn :tnext<CR>
 nmap <Leader>tp :tprevious<CR>
 
 "ctrlsf
-nnoremap <leader>sp <Plug>CtrlSFCwordPath
-nnoremap <leader>sr :CtrlSF<CR>
-nnoremap <leader>sf :CtrlSF
-vmap     <leader>sw <Plug>CtrlSFVwordPath
+"ctrl-c stop searching
+"p to preview, q to close
+"-R:regular search
+"-I insensitive, -S sensitive
+"-C, -A, -B, context lines
+"-W: word only
+"-filetype
+"-filematch
+":h ctrlsf
+nmap <leader>sf :CtrlSF
+nmap <leader>sw <Plug>CtrlSFCwordExec
+vmap <leader>sv <Plug>CtrlSFVwordExec
+"nnoremap <leader>so :CtrlSFOpen<CR>
+nmap <leader>st :CtrlSFToggle<CR>
+
 
 "cscope
 nmap <leader>fa :cs f

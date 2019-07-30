@@ -10,6 +10,14 @@ let mapleader=","
 filetype on
 filetype plugin on
 
+"easy grep
+let g:EasyGrepMode = 1       "all:0, open buffers:1, trackext:2
+let g:EasyGrepCommand = 0   "vimgrep:0, grepprg:1
+let g:EasyGrepIgnoreCase = 1
+
+"ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 "easy-motion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -21,7 +29,7 @@ set undofile
 
 "CTRL-P
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_map = '<c-f>'
+"let g:ctrlp_map = '<c-f>'
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
@@ -33,7 +41,7 @@ set guioptions-=L
 
 set history=500
 " 让配置变更立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+"autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set smartcase
 set autoindent
 " 开启实时搜索功能
@@ -184,6 +192,13 @@ let NERDTreeShowHidden=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
 
+"let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '222']
+"let g:interestingWordsGUIColors = ['#8CCBEA', '#A4E57E', '#FFDB72', '#FF7272', '#FFB3FF', '#9999FF']
+"let g:interestingWordsRandomiseColors = 1
+
+"ctrlsf
+let g:ctrlsf_ackprg = '/usr/bin/ag'
+
 call plug#begin('~/.vim/plugged')
 "status bar
 Plug 'vim-airline/vim-airline'
@@ -209,12 +224,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'mileszs/ack.vim'
-
 "nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
 "nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
 "nnoremap <silent> n :call WordNavigation('forward')<cr>
 "nnoremap <silent> N :call WordNavigation('backward')<cr>
 Plug 'lfv89/vim-interestingwords'
+Plug 'dkprice/vim-easygrep'
 
 call plug#end()
 
