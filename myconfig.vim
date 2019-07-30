@@ -8,9 +8,10 @@ map 0 ^
 ":bn  bnext
 ":bp  bprevious
 "bufdo bd: close all buffers
-"map bc :Bclose<cr>:tabclose<cr>gT
-"map bn :bnext<cr>
-"map bp :bprevious<cr>
+nnoremap <leader>bd :bdelete<cr>
+nnoremap <leader>bn :bnext<cr>
+nnoremap <leader>bp :bprevious<cr>
+nnoremap <leader>ba :badd<cr>
 "close all buffers but current one
 ":%bd|e# 
 
@@ -38,8 +39,25 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 "Disable highlight
 map <silent> <leader><cr> :noh<cr>
 
+"vim-buffer
+nnoremap <leader>bo :BufOnly<cr>
+
+"vim-smooth-scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 40, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 40, 4)<CR>
+
+"vim-signature
+"mx : toggle mark x
+"dmx: remove x
+"m- : delete makrs in current line
+"m/ : show marks
+"m<Space> : delete all marks in current buffer
+"m<BS>: delete all mark
+"
 " *.cpp 和 *.h 间切换
-nmap <silent> <Leader>sw :FSHere<cr>
+nmap <silent> <Leader>ss :FSHere<cr>
 
 "easy grep
 ",vv : search word in current cursor
@@ -47,10 +65,12 @@ nmap <silent> <Leader>sw :FSHere<cr>
 ",vr : :Replace
 ",vo : :GrepOptions
 "easymotion
-nmap <leader>ef <Plug>(easymotion-sl)
-nmap <leader>ed <Plug>(easymotion-s2)
-nmap <leader>el <Plug>(easymotion-overwin-line)
-nmap  <leader>ew <Plug>(easymotion-bd-w)
+"nmap <leader>ef <Plug>(easymotion-sl)
+"nmap <leader>ed <Plug>(easymotion-s2)
+"nmap <leader>el <Plug>(easymotion-overwin-line)
+"nmap  <leader>ew <Plug>(easymotion-bd-w)
+map q <Nop>
+nmap qw <Plug>(easymotion-bd-w)
 
 "ctrlp
 "Press <c-f> and <c-b> to cycle between modes.

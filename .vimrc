@@ -78,7 +78,6 @@ set number
 
 " 高亮显示当前行/列
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 "set cursorcolumn
 " 高亮显示搜索结果
 set hlsearch
@@ -231,6 +230,9 @@ Plug 'mileszs/ack.vim'
 "nnoremap <silent> N :call WordNavigation('backward')<cr>
 Plug 'lfv89/vim-interestingwords'
 Plug 'dkprice/vim-easygrep'
-
+Plug 'kshenoy/vim-signature'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'rhysd/clever-f.vim'
+Plug 'chxuan/vim-buffer'
 call plug#end()
 
