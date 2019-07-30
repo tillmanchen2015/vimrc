@@ -12,7 +12,7 @@ map 0 ^
 "map bn :bnext<cr>
 "map bp :bprevious<cr>
 "close all buffers but current one
-"nnoremap <leader>bonly :%bd|e
+":%bd|e# 
 
 "tabs
 "tabnew
@@ -28,6 +28,8 @@ map 0 ^
 nnoremap <leader>wo <C-W><C-W>
 nnoremap <leader>wk <C-W>k
 nnoremap <leader>wj <C-W>j
+nnoremap <leader>wh <C-W>h
+nnoremap <leader>wl <C-W>l
 
 "search
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -35,6 +37,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 "Disable highlight
 map <silent> <leader><cr> :noh<cr>
+
 " *.cpp 和 *.h 间切换
 nmap <silent> <Leader>sw :FSHere<cr>
 
@@ -89,7 +92,8 @@ nmap <leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR><CR>  
 
 "nerdtree
-nmap <leader>fl :NERDTreeToggle<CR>
+"nmap <leader>fl :NERDTreeToggle<CR>
+nmap <leader>fl :NERDTreeFocus<CR>
 
 "quickfix
 nmap <leader>qo :copen<CR>
