@@ -2,17 +2,13 @@
 map 0 ^
 
 "buffer
-"use vim cmd directly
-":badd
-":bd  bdelete
-":bn  bnext
-":bp  bprevious
-"bufdo bd: close all buffers
 nnoremap <leader>bd :bdelete<cr>
 nnoremap <leader>bn :bnext<cr>
 nnoremap <leader>bp :bprevious<cr>
 nnoremap <leader>ba :badd<cr>
+"vim-buffer
 "close all buffers but current one
+nnoremap <leader>bo :BufOnly<cr>
 ":%bd|e# 
 
 "tabs
@@ -24,6 +20,12 @@ nnoremap <leader>ba :badd<cr>
 "map tc :tabclose<cr>
 "map tm :tabmove
 "map tx :tabnext
+
+"ack.vim
+" When you press gv you Ack after the selected text
+vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 "windows
 nnoremap <leader>wo <C-W><C-W>
@@ -38,9 +40,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 "Disable highlight
 map <silent> <leader><cr> :noh<cr>
-
-"vim-buffer
-nnoremap <leader>bo :BufOnly<cr>
 
 "vim-smooth-scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
@@ -124,12 +123,31 @@ nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR><CR>
 nmap <leader>fl :NERDTreeFocus<CR>
 
 "quickfix
-nmap <leader>qf :copen<CR>
+nmap <leader>qf :vertical copen 100<CR>
 nmap <leader>qc :cclose<CR>
 nmap <leader>qn :cnext<CR>
 nmap <leader>qp :cpre<CR>
 "nmap <leader>qf :cfirst<CR>
 "nmap <leader>ql :clast<CR>
+nnoremap <leader>m :call MaximizeToggle()<CR>
+"nnoremap <C-W>o :call MaximizeToggle()<CR>
+"nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
 
 " 替换函数。参数说明：
 " confirm：是否替换前逐一确认

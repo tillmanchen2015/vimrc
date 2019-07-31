@@ -17,6 +17,8 @@ let g:EasyGrepIgnoreCase = 1
 
 "ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ack_qhandler = "vertical copen 100"
+let g:ackhighlight = 1
 
 "easy-motion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -27,6 +29,12 @@ let g:EasyMotion_smartcase = 1
 set undodir=~/undodir
 set undofile
 
+"for regular expression
+set magic
+"show matching bracket when text indicator is over them\
+set showmatch
+"set a bit extra margin to the left
+set foldcolumn=1
 "CTRL-P
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_working_path_mode = 0
@@ -108,6 +116,10 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+set nobackup
+set nowb
+set noswapfile
 
 " 基于缩进或语法进行代码折叠
 set foldmethod=indent
@@ -197,6 +209,7 @@ let NERDTreeAutoDeleteBuffer=1
 "let g:interestingWordsRandomiseColors = 1
 
 "ctrlsf
+let g:ctrlsf_context = '-B 0 -A 0'
 let g:ctrlsf_ackprg = '/usr/bin/ag'
 
 call plug#begin('~/.vim/plugged')
