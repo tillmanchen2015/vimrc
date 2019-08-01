@@ -6,6 +6,8 @@
 "common
 map 0 ^
 
+"""""""""""""""""""""""""""""""A"""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""B"""""""""""""""""""""""""""""""
 "buffer
 nnoremap <leader>bd :bdelete<cr>
 nnoremap <leader>bn :bnext<cr>
@@ -15,6 +17,135 @@ nnoremap <leader>ba :badd<cr>
 "close all buffers but current one
 nnoremap <leader>bo :BufOnly<cr>
 ":%bd|e# 
+
+"""""""""""""""""""""""""""""""C"""""""""""""""""""""""""""""""
+"ctrlp
+"Press <c-f> and <c-b> to cycle between modes.
+"Press <c-d> to switch to filename only search instead of full path.
+"Press <c-r> to switch to regexp mode.
+"Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+"find file
+map <leader>cf :CtrlP           
+"find buffer
+map <leader>cb :CtrlPBuffer
+"mru
+map<leader>cm :CtrlPMRU
+
+"""""""""""""""""""""""""""""""D"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""E"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""F"""""""""""""""""""""""""""""""
+"nerdtree
+"nmap <leader>fl :NERDTreeToggle<CR>
+nmap <leader>fl :NERDTreeFocus<CR>
+
+"""""""""""""""""""""""""""""""G"""""""""""""""""""""""""""""""
+"attention: gg gd gD g; g. is occupied
+"cscope
+nmap <leader>ga :cs f
+nmap gs :cs find s <C-R>=expand("<cword>")<CR><CR> 
+nmap gf :cs find g <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>gc :cs find c <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>gd :cs find d <C-R>=expand("<cword>")<CR><CR>  
+nmap gt :cs find t <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>ge :cs find e <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>gf :cs find f <C-R>=expand("<cfile>")<CR><CR>  
+nmap <leader>gi :cs find i ^<C-R>=expand("<cfile>")<CR><CR>  
+
+"ack.vim
+" When you press gv you Ack after the selected text
+vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+
+"go back, go next, like chrome
+nmap gb <C-O> 
+nmap gn <C-I>   
+
+"""""""""""""""""""""""""""""""H"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""I"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""J"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""K"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""M"""""""""""""""""""""""""""""""
+nnoremap <leader>mx :call MaximizeToggle()<CR>
+
+"""""""""""""""""""""""""""""""L"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""N"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""O"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""P"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""Q"""""""""""""""""""""""""""""""
+map q <Nop>
+nmap qw <Plug>(easymotion-bd-w)
+
+"quickfix
+nmap qf :vertical copen 100<CR>
+nmap qc :cclose<CR>
+nmap qn :cnext<CR>
+nmap qp :cpre<CR>
+"nmap <leader>qf :cfirst<CR>
+"nmap <leader>ql :clast<CR>
+"
+"""""""""""""""""""""""""""""""R"""""""""""""""""""""""""""""""
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+
+"""""""""""""""""""""""""""""""S"""""""""""""""""""""""""""""""
+" *.cpp 和 *.h 间切换
+nmap <silent> <Leader>ss :FSHere<cr>
+
+"ctrlsf
+"ctrl-c stop searching
+"p to preview, q to close
+"-R:regular search
+"-I insensitive, -S sensitive
+"-C, -A, -B, context lines
+"-W: word only
+"-filetype
+"-filematch
+":h ctrlsf
+nmap <leader>sf :CtrlSF
+nmap <leader>sw <Plug>CtrlSFCwordPath
+vmap <leader>sv <Plug>CtrlSFVwordPath
+"nnoremap <leader>so :CtrlSFOpen<CR>
+nmap <leader>st :CtrlSFToggle<CR>
+
+"""""""""""""""""""""""""""""""T"""""""""""""""""""""""""""""""
+"tarbar
+nnoremap <Leader>ts :TagbarToggle
+" 正向遍历同名标签
+nmap <Leader>tn :tnext
+" 反向遍历同名标签
+nmap <Leader>tp :tprevious
+
+"""""""""""""""""""""""""""""""U"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""V"""""""""""""""""""""""""""""""
+"easy grep
+",vv : search word in current cursor
+",vV : search whole word in current cursor
+",vr : :Replace
+",vo : :GrepOptions
+"
+"""""""""""""""""""""""""""""""W"""""""""""""""""""""""""""""""
+"windows
+nnoremap <leader>wo <C-W><C-W>
+nnoremap <leader>wk <C-W>k
+nnoremap <leader>wj <C-W>j
+nnoremap <leader>wh <C-W>h
+nnoremap <leader>wl <C-W>l
+
+"""""""""""""""""""""""""""""""X"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""Y"""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""Z"""""""""""""""""""""""""""""""
 
 "tabs
 "tabnew
@@ -33,18 +164,7 @@ nnoremap <leader>bo :BufOnly<cr>
 "g; jump back
 "g, jump next
 
-"ack.vim
-" When you press gv you Ack after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-"windows
-nnoremap <leader>wo <C-W><C-W>
-nnoremap <leader>wk <C-W>k
-nnoremap <leader>wj <C-W>j
-nnoremap <leader>wh <C-W>h
-nnoremap <leader>wl <C-W>l
 
 "search
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -67,81 +187,19 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 40, 4)<CR>
 "m<Space> : delete all marks in current buffer
 "m<BS>: delete all mark
 "
-" *.cpp 和 *.h 间切换
-nmap <silent> <Leader>ss :FSHere<cr>
 
-"easy grep
-",vv : search word in current cursor
-",vV : search whole word in current cursor
-",vr : :Replace
-",vo : :GrepOptions
 "easymotion
 "nmap <leader>ef <Plug>(easymotion-sl)
 "nmap <leader>ed <Plug>(easymotion-s2)
 "nmap <leader>el <Plug>(easymotion-overwin-line)
 "nmap  <leader>ew <Plug>(easymotion-bd-w)
-map q <Nop>
-nmap qw <Plug>(easymotion-bd-w)
-
-"ctrlp
-"Press <c-f> and <c-b> to cycle between modes.
-"Press <c-d> to switch to filename only search instead of full path.
-"Press <c-r> to switch to regexp mode.
-"Use <c-j>, <c-k> or the arrow keys to navigate the result list.
-"find file
-map <leader>cf :CtrlP           
-"find buffer
-map <leader>cb :CtrlPBuffer
-"mru
-map<leader>cm :CtrlPMRU
-
-"tarbar
-nnoremap <Leader>ts :TagbarToggle
-" 正向遍历同名标签
-nmap <Leader>tn :tnext
-" 反向遍历同名标签
-nmap <Leader>tp :tprevious
-
-"ctrlsf
-"ctrl-c stop searching
-"p to preview, q to close
-"-R:regular search
-"-I insensitive, -S sensitive
-"-C, -A, -B, context lines
-"-W: word only
-"-filetype
-"-filematch
-":h ctrlsf
-nmap <leader>sf :CtrlSF
-nmap <leader>sw <Plug>CtrlSFCwordPath
-vmap <leader>sv <Plug>CtrlSFVwordPath
-"nnoremap <leader>so :CtrlSFOpen<CR>
-nmap <leader>st :CtrlSFToggle<CR>
 
 
-"cscope
-nmap <leader>ga :cs f
-nmap <leader>gs :cs find s <C-R>=expand("<cword>")<CR><CR> 
-nmap <leader>gg :cs find g <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>gc :cs find c <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>gd :cs find d <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>gt :cs find t <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>ge :cs find e <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>gf :cs find f <C-R>=expand("<cfile>")<CR><CR>  
-nmap <leader>gi :cs find i ^<C-R>=expand("<cfile>")<CR><CR>  
 
-"nerdtree
-"nmap <leader>fl :NERDTreeToggle<CR>
-nmap <leader>fl :NERDTreeFocus<CR>
 
-"quickfix
-nmap <leader>qf :vertical copen 100<CR>
-nmap <leader>qc :cclose<CR>
-nmap <leader>qn :cnext<CR>
-nmap <leader>qp :cpre<CR>
-"nmap <leader>qf :cfirst<CR>
-"nmap <leader>ql :clast<CR>
-nnoremap <leader>m :call MaximizeToggle()<CR>
+
+
+
 "nnoremap <C-W>o :call MaximizeToggle()<CR>
 "nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
 
