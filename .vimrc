@@ -33,8 +33,6 @@ set undofile
 set magic
 "show matching bracket when text indicator is over them\
 set showmatch
-"set a bit extra margin to the left
-set foldcolumn=1
 "CTRL-P
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_working_path_mode = 0
