@@ -21,6 +21,13 @@ nnoremap <leader>bo :BufOnly<cr>
 "map tm :tabmove
 "map tx :tabnext
 
+"delete marks
+"delm! delm A-Z delm 0-9
+
+"change list
+"g; jump back
+"g, jump next
+
 "ack.vim
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
@@ -108,15 +115,15 @@ nmap <leader>st :CtrlSFToggle<CR>
 
 
 "cscope
-nmap <leader>fa :cs f
-nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR> 
-nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>fc :cs find c <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>fd :cs find d <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>ft :cs find t <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>fe :cs find e <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>ff :cs find f <C-R>=expand("<cfile>")<CR><CR>  
-nmap <leader>fi :cs find i ^<C-R>=expand("<cfile>")<CR><CR>  
+nmap <leader>ga :cs f
+nmap <leader>gs :cs find s <C-R>=expand("<cword>")<CR><CR> 
+nmap <leader>gg :cs find g <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>gc :cs find c <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>gd :cs find d <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>gt :cs find t <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>ge :cs find e <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>gf :cs find f <C-R>=expand("<cfile>")<CR><CR>  
+nmap <leader>gi :cs find i ^<C-R>=expand("<cfile>")<CR><CR>  
 
 "nerdtree
 "nmap <leader>fl :NERDTreeToggle<CR>

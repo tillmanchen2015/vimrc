@@ -10,6 +10,9 @@ let mapleader=","
 filetype on
 filetype plugin on
 
+"distinguish normal and insert
+:autocmd InsertEnter,InsertLeave * set cul!
+
 "easy grep
 let g:EasyGrepMode = 1       "all:0, open buffers:1, trackext:2
 let g:EasyGrepCommand = 0   "vimgrep:0, grepprg:1
