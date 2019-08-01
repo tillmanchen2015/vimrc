@@ -1,3 +1,8 @@
+"something need to changed for windows git bash
+"1. plug path, for windows git bash, it's /usr/share/vim/vim81/plugged. search plug#begin
+"2. windows git bash doesn't contain ag. comment line ctrlsf_ackprg
+"3. myconfig.vim is located in /usr/share/vim/vim81/after/plugin
+
 "common
 map 0 ^
 
