@@ -7,6 +7,7 @@
 map 0 ^
 
 """""""""""""""""""""""""""""""A"""""""""""""""""""""""""""""""
+
 """""""""""""""""""""""""""""""B"""""""""""""""""""""""""""""""
 "buffer
 nnoremap <leader>bd :bdelete<cr>
@@ -34,6 +35,11 @@ map<leader>cm :CtrlPMRU
 """""""""""""""""""""""""""""""D"""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""E"""""""""""""""""""""""""""""""
+"scroll page:
+nmap ej <C-D>
+nmap ek <C-u>
+nmap el <C-F>
+nmap e; <C-B>
 
 """""""""""""""""""""""""""""""F"""""""""""""""""""""""""""""""
 "nerdtree
@@ -41,25 +47,29 @@ map<leader>cm :CtrlPMRU
 nmap <leader>fl :NERDTreeFocus<CR>
 
 """""""""""""""""""""""""""""""G"""""""""""""""""""""""""""""""
-"attention: gg gd gD g; g. is occupied
+"attention: gg gd gD g; g, are occupied
+"g; jump back to previous change
+"g, jump to next change
+"go to any word
+nmap g' <Plug>(easymotion-bd-w)
 "cscope
-nmap <leader>ga :cs f
-nmap gs :cs find s <C-R>=expand("<cword>")<CR><CR> 
-nmap gf :cs find g <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>gc :cs find c <C-R>=expand("<cword>")<CR><CR>  
-nmap <leader>gd :cs find d <C-R>=expand("<cword>")<CR><CR>  
-nmap gt :cs find t <C-R>=expand("<cword>")<CR><CR>  
+nmap gk :cs find s <C-R>=expand("<cword>")<CR><CR> 
+nmap gj :cs find g <C-R>=expand("<cword>")<CR><CR>  
+nmap gl :cs find t <C-R>=expand("<cword>")<CR><CR>  
+"go back, go next, like chrome
+nmap gb <C-O> 
+nmap gn <C-I>   
+
 nmap <leader>ge :cs find e <C-R>=expand("<cword>")<CR><CR>  
 nmap <leader>gf :cs find f <C-R>=expand("<cfile>")<CR><CR>  
 nmap <leader>gi :cs find i ^<C-R>=expand("<cfile>")<CR><CR>  
-
+nmap <leader>ga :cs f
+nmap <leader>gc :cs find c <C-R>=expand("<cword>")<CR><CR>  
+nmap <leader>gd :cs find d <C-R>=expand("<cword>")<CR><CR>  
 "ack.vim
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
-"go back, go next, like chrome
-nmap gb <C-O> 
-nmap gn <C-I>   
 
 """""""""""""""""""""""""""""""H"""""""""""""""""""""""""""""""
 
@@ -81,11 +91,12 @@ nnoremap <leader>mx :call MaximizeToggle()<CR>
 """""""""""""""""""""""""""""""P"""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""Q"""""""""""""""""""""""""""""""
+"I don't use recording
 map q <Nop>
-nmap qw <Plug>(easymotion-bd-w)
 
 "quickfix
-nmap qf :vertical copen 100<CR>
+"nmap qf :vertical copen 100<CR>
+nmap qf :copen 20<CR>
 nmap qc :cclose<CR>
 nmap qn :cnext<CR>
 nmap qp :cpre<CR>
