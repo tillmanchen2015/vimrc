@@ -26,11 +26,11 @@ nnoremap <leader>bo :BufOnly<cr>
 "Press <c-r> to switch to regexp mode.
 "Use <c-j>, <c-k> or the arrow keys to navigate the result list.
 "find file
-map <leader>cf :CtrlP           
+map <leader>cf :CtrlP<CR>
 "find buffer
-map <leader>cb :CtrlPBuffer
+map <leader>cb :CtrlPBuffer<CR>
 "mru
-map<leader>cm :CtrlPMRU
+map<leader>cm :CtrlPMRU<CR>
 
 """""""""""""""""""""""""""""""D"""""""""""""""""""""""""""""""
 
@@ -53,11 +53,11 @@ nmap <leader>fl :NERDTreeFocus<CR>
 "go to any word
 nmap g' <Plug>(easymotion-bd-w)
 "cscope
-nmap gk :cs find s <C-R>=expand("<cword>")<CR><CR> 
 nmap gj :cs find g <C-R>=expand("<cword>")<CR><CR>  
-nmap gl :cs find t <C-R>=expand("<cword>")<CR><CR>  
+nmap gk :cs find s <C-R>=expand("<cword>")<CR><CR> 
+nmap gl :cs find t <C-R>=expand("<cword>")<CR><CR> 
 "go back, go next, like chrome
-nmap gb <C-O> 
+nmap gp <C-O> 
 nmap gn <C-I>   
 
 nmap <leader>ge :cs find e <C-R>=expand("<cword>")<CR><CR>  
@@ -96,21 +96,18 @@ map q <Nop>
 
 "quickfix
 "nmap qf :vertical copen 100<CR>
-nmap qf :copen 20<CR>
-nmap qc :cclose<CR>
-nmap qn :cnext<CR>
-nmap qp :cpre<CR>
-"nmap <leader>qf :cfirst<CR>
-"nmap <leader>ql :clast<CR>
+nmap qj :cnext<CR>
+nmap qk :cpre<CR>
+nmap ql :copen<CR>
+nmap q; :cclose<CR>
+nmap qu :cfirst<CR>
+nmap qi :clast<CR>
 "
 """""""""""""""""""""""""""""""R"""""""""""""""""""""""""""""""
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 """""""""""""""""""""""""""""""S"""""""""""""""""""""""""""""""
-" *.cpp 和 *.h 间切换
-nmap <silent> <Leader>ss :FSHere<cr>
-
 "ctrlsf
 "ctrl-c stop searching
 "p to preview, q to close
@@ -121,11 +118,13 @@ nmap <silent> <Leader>ss :FSHere<cr>
 "-filetype
 "-filematch
 ":h ctrlsf
-nmap <leader>sf :CtrlSF
-nmap <leader>sw <Plug>CtrlSFCwordPath
-vmap <leader>sv <Plug>CtrlSFVwordPath
-"nnoremap <leader>so :CtrlSFOpen<CR>
-nmap <leader>st :CtrlSFToggle<CR>
+nmap <leader>sj <Plug>CtrlSFCwordPath -ignoredir 'tags' -filetype cc
+vmap <leader>sk <Plug>CtrlSFVwordPath -ignoredir 'tags' -filetype cc
+nmap <leader>sl :CtrlSFToggle<CR>
+"nmap <leader>s; :CtrlSF -ignoredir 'tags' -filetype cc
+
+" *.cpp 和 *.h 间切换
+nmap <silent> <Leader>su :FSHere<cr>
 
 """""""""""""""""""""""""""""""T"""""""""""""""""""""""""""""""
 "tarbar

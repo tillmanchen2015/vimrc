@@ -37,10 +37,10 @@ set magic
 "show matching bracket when text indicator is over them\
 set showmatch
 "CTRL-P
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,tags
+let g:ctrlp_by_filename = 1
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+"let g:ctrlp_max_height = 20
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
@@ -210,8 +210,17 @@ let NERDTreeAutoDeleteBuffer=1
 "let g:interestingWordsRandomiseColors = 1
 
 "ctrlsf
-let g:ctrlsf_context = '-B 0 -A 0'
+let g:ctrlsf_context = '-B 2 -A 2'
 let g:ctrlsf_ackprg = '/usr/bin/ag'
+"let g:ctrlsf_position = 'bottom'
+"let g:ctrlsf_winsize = '0'
+let g:ctrlsf_extra_backend_args = {
+        \ 'pt': '--home-ptignore'
+        \ }
+"let g:ctrlsf_populate_qflist = 1
+"let g:ctrlsf_ignore_dir = ['bower_components', 'node_modules']
+let g:ctrlsf_indent = 2
+":CtrlSF -ignoredir "bower_components" 'console.log'
 
 call plug#begin('~/.vim/plugged')
 "status bar
